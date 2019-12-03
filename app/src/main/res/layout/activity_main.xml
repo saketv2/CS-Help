@@ -66,27 +66,65 @@
         app:srcCompat="@drawable/cs_125_logo" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="317dp"
-        android:layout_height="70dp"
-        android:text="Number of Students at Office Hours:"
-        android:textColor="#FFFFFF"
-        android:textSize="19sp"
+        android:id="@+id/textView2"
+        android:layout_width="235dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="224dp"
+        android:gravity="center_horizontal"
+        android:text="Wait Time for TA Help: "
+        android:textColor="#8DFFFFFF"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.17"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/appTitle" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.311" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="326dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="268dp"
-        android:text="Estimated Wait Time: "
+        android:id="@+id/textView3"
+        android:layout_width="249dp"
+        android:layout_height="69dp"
+        android:gravity="center_horizontal"
+        android:text="23 minutes"
         android:textColor="#FFFFFF"
-        android:textSize="19sp"
+        android:textSize="45sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.249" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="249dp"
+        android:layout_height="69dp"
+        android:gravity="center_horizontal"
+        android:text="42"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.422" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="225dp"
+        android:layout_height="31dp"
+        android:gravity="center_horizontal"
+        android:text="# of Students in Room 0403:"
+        android:textColor="#6DFFFFFF"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/appTitle"
+        app:layout_constraintVertical_bias="0.336" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
