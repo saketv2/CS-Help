@@ -76,4 +76,14 @@ public class MainActivity extends AppCompatActivity {
         updateUi();
     }
 
+    public int liveCount() {
+        return 0;
+    }
+
+    public double estimatedTime() {
+        return 0;
+    }
+
+
+
 }
