@@ -3,6 +3,7 @@ package com.example.cshelp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -66,12 +67,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkIn() {
         USER_CHECKED_IN = true;
+        Log.i("checkIn Button", "The button for checking in was clicked.");
         // web request to server
         updateUi();
     }
 
     public void checkOut() {
         USER_CHECKED_IN = false;
+        Log.i("checkOut Button", "The button for checking out was clicked.");
         // web request to server
         updateUi();
     }
