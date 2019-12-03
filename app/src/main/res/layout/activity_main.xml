@@ -19,10 +19,25 @@
         app:layout_constraintVertical_bias="0.048" />
 
     <Button
-        android:id="@+id/checkButton"
+        android:id="@+id/checkInButton"
         android:layout_width="182dp"
         android:layout_height="88dp"
         android:text="Check In"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.883" />
+
+    <Button
+        android:id="@+id/checkOutButton"
+        android:layout_width="182dp"
+        android:layout_height="88dp"
+        android:text="Check Out"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp"
         android:textStyle="bold"
