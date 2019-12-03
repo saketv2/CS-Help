@@ -14,4 +14,7 @@ public class MainActivity extends AppCompatActivity {
     public void sample() {
         System.out.println("test");
     }
+    public int theMostImportantMethod() {
+        return 0;
+    }
 }
