@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
         checkOutButton.setVisibility(View.GONE);
 
         // this will change lol (temporary hardcoding)
-        USER_CHECKED_IN = false;
 
+        USER_CHECKED_IN = false;
         // will update the UI!
         updateUi();
     }

@@ -9,16 +9,18 @@
 
     <TextView
         android:id="@+id/appTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="The Official Office Hours App"
+        android:layout_width="195dp"
+        android:layout_height="73dp"
+        android:text="The CS125 Office Hours App"
         android:textColor="#FFFFFF"
-        android:textSize="18sp"
+        android:textSize="25sp"
+        app:fontFamily="sans-serif-light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintVertical_bias="0.060000002" />
 
     <Button
         android:id="@+id/checkInButton"
@@ -27,7 +29,7 @@
         android:text="Check In"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -42,7 +44,7 @@
         android:text="Check Out"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="30sp"
-        android:textStyle="bold"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -53,14 +55,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="95dp"
-        android:layout_height="79dp"
+        android:layout_width="86dp"
+        android:layout_height="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appTitle"
-        app:layout_constraintVertical_bias="0.083"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/cs_125_logo" />
 
     <TextView
