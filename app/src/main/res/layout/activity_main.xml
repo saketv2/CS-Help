@@ -66,7 +66,7 @@
         app:srcCompat="@drawable/cs_125_logo" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/etaHeading"
         android:layout_width="235dp"
         android:layout_height="32dp"
         android:layout_marginBottom="224dp"
@@ -83,7 +83,7 @@
         app:layout_constraintVertical_bias="0.311" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/etaText"
         android:layout_width="249dp"
         android:layout_height="69dp"
         android:gravity="center_horizontal"
@@ -98,7 +98,7 @@
         app:layout_constraintVertical_bias="0.249" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/numStudentsText"
         android:layout_width="249dp"
         android:layout_height="69dp"
         android:gravity="center_horizontal"
@@ -113,7 +113,7 @@
         app:layout_constraintVertical_bias="0.422" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/numStudentsHeading"
         android:layout_width="225dp"
         android:layout_height="31dp"
         android:gravity="center_horizontal"
@@ -126,5 +126,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appTitle"
         app:layout_constraintVertical_bias="0.336" />
+
+    <ImageButton
+        android:id="@+id/refreshButton"
+        android:layout_width="70dp"
+        android:layout_height="83dp"
+        android:alpha="0.50"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.58"
+        app:srcCompat="@drawable/refresh_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

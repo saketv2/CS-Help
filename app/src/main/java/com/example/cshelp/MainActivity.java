@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button checkInButton;
     Button checkOutButton;
+    ImageButton refreshButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         checkInButton = findViewById(R.id.checkInButton);
         checkOutButton = findViewById(R.id.checkOutButton);
+        refreshButton = findViewById(R.id.refreshButton);
 
         // clicking checkin button will trigger checkIn method
         checkInButton.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 checkOut();
+            }
+        });
+
+        // refresh button will call the refresh method
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                refresh();
             }
         });
 
@@ -79,11 +90,27 @@ public class MainActivity extends AppCompatActivity {
         updateUi();
     }
 
-    public int liveCount() {
+    public void refresh() {
+        Log.i("refresh Button", "The button for refreshing was clicked.");
+        refreshET(getEstimatedTime());
+        refreshLiveCount(getLiveCount());
+    }
+
+    public void refreshET(double latestET) {
+        // refreshes the estimated time textview
+    }
+
+    public void refreshLiveCount(int latestCount) {
+        //refreshes the count textview
+    }
+
+    public int getLiveCount() {
+        // will get from server
         return 0;
     }
 
-    public double estimatedTime() {
+    public double getEstimatedTime() {
+        // will get from server
         return 0;
     }
 
