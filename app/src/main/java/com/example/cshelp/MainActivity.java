@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         database = FirebaseDatabase.getInstance().getReference();
-        database.child("count").setValue(count);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -89,7 +88,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkIn() {
-        database.child("count").setValue(count++);
+
+        // WRITE CAPABILITY
+        database.child("count").setValue(321);
+
+        // READ CAPABILITY
+        DatabaseReference countChildRef = database.child("count");
+        countChildRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String currentCount = dataSnapshot.getValue().toString();
+                Log.i("SDKJAFHKJ", currentCount);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
         USER_CHECKED_IN = true;
         Log.i("checkIn Button", "The button for checking in was clicked.");
         // web request to server
