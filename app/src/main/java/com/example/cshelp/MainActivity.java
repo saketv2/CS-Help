@@ -16,13 +16,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-
 public class MainActivity extends AppCompatActivity {
 
     boolean USER_CHECKED_IN;
     private DatabaseReference database;
     DatabaseReference countChildRef;
-    private Integer count;
+
     Button checkInButton;
     Button checkOutButton;
     ImageButton refreshButton;
@@ -70,15 +69,13 @@ public class MainActivity extends AppCompatActivity {
         checkInButton.setVisibility(View.GONE);
         checkOutButton.setVisibility(View.GONE);
 
-        // this will change lol (temporary hardcoding)
-
         USER_CHECKED_IN = false;
-        // will update the UI!
+
         updateUi();
     }
 
-    public void updateUi() {
 
+    public void updateUi() {
         //master check in/out button
         if (USER_CHECKED_IN) {
             checkOutButton.setVisibility(View.VISIBLE);
@@ -89,8 +86,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         refresh();
-        // update live count of checked in folks
-        // update estimated wait time
     }
 
     public void refresh() {
@@ -127,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkOut() {
-//        database.child("count").setValue(count++);
         USER_CHECKED_IN = false;
         Log.i("checkOut Button", "The button for checking out was clicked.");
         // web request to server
