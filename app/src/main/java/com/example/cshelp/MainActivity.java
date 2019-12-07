@@ -21,14 +21,17 @@ public class MainActivity extends AppCompatActivity {
 
     boolean USER_CHECKED_IN;
     private DatabaseReference database;
+    DatabaseReference countChildRef;
     private Integer count;
     Button checkInButton;
     Button checkOutButton;
     ImageButton refreshButton;
+    TextView countView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         database = FirebaseDatabase.getInstance().getReference();
+        countChildRef = database.child("count");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         checkInButton = findViewById(R.id.checkInButton);
         checkOutButton = findViewById(R.id.checkOutButton);
         refreshButton = findViewById(R.id.refreshButton);
+
+        countView = findViewById(R.id.numStudentsText);
 
         // clicking checkin button will trigger checkIn method
         checkInButton.setOnClickListener(new View.OnClickListener() {
@@ -83,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
             checkOutButton.setVisibility(View.GONE);
         }
 
-        // update live count of checked in folks
         refresh();
+        // update live count of checked in folks
         // update estimated wait time
     }
 
@@ -95,11 +100,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void refreshCount() {
         // READ CAPABILITY
-        DatabaseReference countChildRef = database.child("count");
-        countChildRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        countChildRef = database.child("count");
+        countChildRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int currentCount = ((Long) dataSnapshot.getValue()).intValue();
+                Log.i("REFRESH", Integer.toString(currentCount));
                 TextView countView = findViewById(R.id.numStudentsText);
                 countView.setText(Integer.toString(currentCount));
             }
@@ -121,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkOut() {
-        database.child("count").setValue(count++);
+//        database.child("count").setValue(count++);
         USER_CHECKED_IN = false;
         Log.i("checkOut Button", "The button for checking out was clicked.");
         // web request to server
@@ -129,8 +135,8 @@ public class MainActivity extends AppCompatActivity {
         updateUi();
     }
 
+
     public void updateCountToServer(final boolean increase) {
-        DatabaseReference countChildRef = database.child("count");
         countChildRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -140,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     database.child("count").setValue(currentCount - 1);
                 }
+
             }
 
             @Override
