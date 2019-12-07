@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     Button checkOutButton;
     ImageButton refreshButton;
     TextView countView;
+    TextView timeView;
+    int countLocalStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         refreshButton = findViewById(R.id.refreshButton);
 
         countView = findViewById(R.id.numStudentsText);
+        timeView = findViewById(R.id.etaText);
 
         // clicking checkin button will trigger checkIn method
         checkInButton.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +93,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void refresh() {
         refreshCount();
-        //refreshEstimatedTime();
+    }
+
+    public void refreshEstimatedTime() {
+        int timeRaw = countLocalStore * 2 + 5;
+        timeView.setText(Integer.toString(timeRaw) + " minutes");
     }
 
     public void refreshCount() {
@@ -101,8 +108,9 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int currentCount = ((Long) dataSnapshot.getValue()).intValue();
                 Log.i("REFRESH", Integer.toString(currentCount));
-                TextView countView = findViewById(R.id.numStudentsText);
                 countView.setText(Integer.toString(currentCount));
+                countLocalStore = currentCount;
+                refreshEstimatedTime();
             }
 
             @Override
