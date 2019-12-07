@@ -3,6 +3,7 @@ package com.example.cshelp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -98,6 +99,13 @@ public class MainActivity extends AppCompatActivity {
     public void refreshEstimatedTime() {
         int timeRaw = countLocalStore * 2 + 5;
         timeView.setText(Integer.toString(timeRaw) + " minutes");
+        if (timeRaw >= 30) {
+            timeView.setTextColor(Color.RED);
+        } else if (timeRaw < 30 && timeRaw > 10) {
+            timeView.setTextColor(Color.YELLOW);
+        } else {
+            timeView.setTextColor(Color.GREEN);
+        }
     }
 
     public void refreshCount() {
