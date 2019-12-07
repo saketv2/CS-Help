@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "880202862497",
+    "firebase_url": "https://cs-125-office-hours-ef8ec.firebaseio.com",
+    "project_id": "cs-125-office-hours-ef8ec",
+    "storage_bucket": "cs-125-office-hours-ef8ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880202862497:android:3f522abce0f26432c645e0",
+        "android_client_info": {
+          "package_name": "com.example.cshelp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880202862497-gkgv5okjq7b1p0jkcavq984k03ql3ue6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJqJ0kXenXKTY4elg6IbGm7g7fFNM0ZQ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "880202862497-gkgv5okjq7b1p0jkcavq984k03ql3ue6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

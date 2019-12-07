@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -83,22 +84,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // update live count of checked in folks
-
+        refresh();
         // update estimated wait time
     }
 
-    public void checkIn() {
+    public void refresh() {
+        refreshCount();
+        //refreshEstimatedTime();
+    }
 
-        // WRITE CAPABILITY
-        database.child("count").setValue(321);
-
+    public void refreshCount() {
         // READ CAPABILITY
         DatabaseReference countChildRef = database.child("count");
         countChildRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String currentCount = dataSnapshot.getValue().toString();
-                Log.i("SDKJAFHKJ", currentCount);
+                int currentCount = ((Long) dataSnapshot.getValue()).intValue();
+                TextView countView = findViewById(R.id.numStudentsText);
+                countView.setText(Integer.toString(currentCount));
             }
 
             @Override
@@ -106,12 +109,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
 
 
-
+    public void checkIn() {
         USER_CHECKED_IN = true;
         Log.i("checkIn Button", "The button for checking in was clicked.");
         // web request to server
+        updateCountToServer(true);
         updateUi();
     }
 
@@ -120,30 +125,28 @@ public class MainActivity extends AppCompatActivity {
         USER_CHECKED_IN = false;
         Log.i("checkOut Button", "The button for checking out was clicked.");
         // web request to server
+        updateCountToServer(false);
         updateUi();
     }
 
-    public void refresh() {
-        Log.i("refresh Button", "The button for refreshing was clicked.");
-        refreshET(getEstimatedTime());
-        refreshLiveCount(getLiveCount());
-    }
+    public void updateCountToServer(final boolean increase) {
+        DatabaseReference countChildRef = database.child("count");
+        countChildRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int currentCount = ((Long) dataSnapshot.getValue()).intValue();
+                if (increase) {
+                    database.child("count").setValue(currentCount + 1);
+                } else {
+                    database.child("count").setValue(currentCount - 1);
+                }
+            }
 
-    public void refreshET(double latestET) {
-        // refreshes the estimated time textview
-    }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-    public void refreshLiveCount(int latestCount) {
-        //refreshes the count textview
-    }
-
-    public int getLiveCount() {
-        return 0;
-    }
-
-    public double getEstimatedTime() {
-        // will get from server
-        return 0;
+            }
+        });
     }
 
 
