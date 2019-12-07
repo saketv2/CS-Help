@@ -74,7 +74,7 @@
         android:layout_height="32dp"
         android:layout_marginBottom="224dp"
         android:gravity="center_horizontal"
-        android:text="Wait Time for TA Help: "
+        android:text="Wait Time for Staff Help: "
         android:textColor="#8DFFFFFF"
         android:textSize="18sp"
         android:textStyle="italic"
