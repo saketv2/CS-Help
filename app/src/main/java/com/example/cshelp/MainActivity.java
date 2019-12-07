@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     Button checkInButton;
     Button checkOutButton;
-    ImageButton refreshButton;
     TextView countView;
     TextView timeView;
     int countLocalStore;
@@ -40,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
         checkInButton = findViewById(R.id.checkInButton);
         checkOutButton = findViewById(R.id.checkOutButton);
-        refreshButton = findViewById(R.id.refreshButton);
 
         countView = findViewById(R.id.numStudentsText);
         timeView = findViewById(R.id.etaText);
@@ -58,14 +56,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 checkOut();
-            }
-        });
-
-        // refresh button will call the refresh method
-        refreshButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                refresh();
             }
         });
 

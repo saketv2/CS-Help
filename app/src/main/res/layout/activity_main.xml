@@ -17,41 +17,10 @@
         app:fontFamily="sans-serif-light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintHorizontal_bias="0.708"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.060000002" />
-
-    <Button
-        android:id="@+id/checkInButton"
-        android:layout_width="182dp"
-        android:layout_height="88dp"
-        android:text="Check In"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="30sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
-
-    <Button
-        android:id="@+id/checkOutButton"
-        android:layout_width="182dp"
-        android:layout_height="88dp"
-        android:text="Check Out"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="30sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
-
+        app:layout_constraintVertical_bias="0.06" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -59,11 +28,45 @@
         android:layout_height="72dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.206"
+        app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appTitle"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/cs_125_logo" />
+
+
+    <Button
+        android:id="@+id/checkInButton"
+        android:layout_width="355dp"
+        android:layout_height="110dp"
+        android:background="#00C531"
+        android:text="Check In"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.713" />
+
+    <Button
+        android:id="@+id/checkOutButton"
+        android:layout_width="355dp"
+        android:layout_height="110dp"
+        android:background="#FF0025"
+        android:text="Check Out"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.713" />
 
     <TextView
         android:id="@+id/etaHeading"
@@ -87,9 +90,9 @@
         android:layout_width="249dp"
         android:layout_height="69dp"
         android:gravity="center_horizontal"
-        android:text="23 minutes"
+        android:text="000 minutes"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,18 +102,19 @@
 
     <TextView
         android:id="@+id/numStudentsText"
-        android:layout_width="249dp"
-        android:layout_height="69dp"
-        android:gravity="center_horizontal"
-        android:text="42"
+        android:layout_width="250dp"
+        android:layout_height="141dp"
+        android:gravity="center|center_horizontal"
+        android:text="000"
         android:textColor="#FFFFFF"
-        android:textSize="50sp"
+        android:textSize="100sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.422" />
+        app:layout_constraintVertical_bias="0.455" />
 
     <TextView
         android:id="@+id/numStudentsHeading"
@@ -126,20 +130,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/appTitle"
         app:layout_constraintVertical_bias="0.336" />
-
-    <ImageButton
-        android:id="@+id/refreshButton"
-        android:layout_width="70dp"
-        android:layout_height="83dp"
-        android:alpha="0.50"
-        android:background="#00FFFFFF"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58"
-        app:srcCompat="@drawable/refresh_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
