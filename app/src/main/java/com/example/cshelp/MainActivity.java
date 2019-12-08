@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,6 +18,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.apache.commons.math3.fitting.PolynomialCurveFitter;
+import org.apache.commons.math3.fitting.WeightedObservedPoints;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +42,12 @@ public class MainActivity extends AppCompatActivity {
     TextView countView;
     TextView timeView;
     int countLocalStore;
+
+
+    List<int[]> dataPoints;
+    WeightedObservedPoints observedPoints;
+    PolynomialCurveFitter curveFitModel;
+    double[] fittedCoefficients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
 
         USER_CHECKED_IN = false;
 
+        // loads up dataPoints ArrayList from csv from res/raw
+        loadData();
+        // populates fittedCoefficients double array
+        fitModel();
+        Log.i("FITTED MODEL",fittedCoefficients[0] + " + " + fittedCoefficients[1] + "*X" + " + " + fittedCoefficients[2] + "*X^2");
         updateUi();
     }
 
@@ -87,12 +111,69 @@ public class MainActivity extends AppCompatActivity {
         refreshCount();
     }
 
+
+
+    private void loadData() {
+        dataPoints = new ArrayList<int[]>();
+
+        InputStream is = getResources().openRawResource(R.raw.timedata);
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(is, Charset.forName("UTF-8")));
+        String line = "";
+
+        int currentObservationStudents;
+        int currentObservationTime;
+
+        try {
+            while ((line = reader.readLine()) != null) {
+                // Split the line into different tokens (using the comma as a separator).
+                String[] tokens = line.split(",");
+
+                try {
+                    currentObservationStudents = Integer.parseInt(tokens[0].trim());
+                    currentObservationTime = Integer.parseInt(tokens[1].trim());
+                } catch (NumberFormatException nfe) {
+                    currentObservationStudents = -1;
+                    currentObservationTime = -1;
+                }
+
+                if (currentObservationStudents >= 0 && currentObservationTime >= 0) {
+                    int[] currentDataPoint = {currentObservationStudents, currentObservationTime};
+                    dataPoints.add(currentDataPoint);
+                    Log.i("MainActivity" ,"Just loaded " + currentObservationStudents + ", " + currentObservationTime);
+                }
+            }
+        } catch (IOException e1) {
+            Log.e("MainActivity", "Error" + line, e1);
+            e1.printStackTrace();
+        }
+    }
+
+
+    public void fitModel() {
+        observedPoints = new WeightedObservedPoints();
+        for (int[] dataPoint : dataPoints) {
+            observedPoints.add(dataPoint[0], dataPoint[1]);
+        }
+        curveFitModel = PolynomialCurveFitter.create(2);
+        fittedCoefficients = curveFitModel.fit(observedPoints.toList());
+    }
+
+
     public void refreshEstimatedTime() {
-        int timeRaw = countLocalStore * 2 + 5;
-        timeView.setText(Integer.toString(timeRaw) + " minutes");
-        if (timeRaw >= 30) {
+
+        double a0 = fittedCoefficients[0];
+        double a1 = fittedCoefficients[1];
+        double a2 = fittedCoefficients[2];
+
+        double raw_y = a0 + a1 * countLocalStore + a2 * Math.pow(countLocalStore,2);
+        Log.i("predicted time: ", Double.toString(raw_y));
+        int roundedIntTime = (int) Math.round(raw_y);
+
+        timeView.setText(Integer.toString(roundedIntTime) + " minutes");
+        if (roundedIntTime >= 15) {
             timeView.setTextColor(Color.RED);
-        } else if (timeRaw < 30 && timeRaw > 10) {
+        } else if (roundedIntTime < 15 && roundedIntTime > 9) {
             timeView.setTextColor(Color.YELLOW);
         } else {
             timeView.setTextColor(Color.GREEN);
